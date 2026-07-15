@@ -1,0 +1,39 @@
+{
+  "name": "three-js-rc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Web-first Three.js RC vehicle simulation foundation.",
+  "homepage": "https://matt-bat.github.io/three-js-rc/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-bat/three-js-rc.git"
+  },
+  "keywords": [
+    "three.js",
+    "rc",
+    "racing",
+    "web-game",
+    "webxr"
+  ],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test tests/browser-smoke.spec.js",
+    "screenshots:capture": "node scripts/capture-screenshots.mjs",
+    "release:check": "npm test && npm run build && npm run test:browser"
+  },
+  "dependencies": {
+    "three": "^0.166.1",
+    "vite": "^8.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "pngjs": "^7.0.0"
+  }
+}

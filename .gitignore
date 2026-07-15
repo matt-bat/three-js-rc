@@ -1,0 +1,16 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.backups/
+.codex/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Local project-management records are intentionally not public release assets.
+user-instructions.md
+docs/governance/
+docs/project-index.md

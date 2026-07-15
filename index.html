@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RC World: Micro Motorsports</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game"></canvas>
+      <section class="hud hud-left" aria-label="Vehicle telemetry">
+        <h1>RC World</h1>
+        <div id="modeLabel">Human Operator</div>
+        <dl>
+          <div><dt>Speed</dt><dd id="speedValue">0.0 m/s</dd></div>
+          <div><dt>Surface</dt><dd id="surfaceValue">asphalt</dd></div>
+          <div><dt>Weather</dt><dd id="weatherValue">clear</dd></div>
+          <div><dt>Vehicle</dt><dd id="vehicleValue">Buggy</dd></div>
+          <div><dt>Camera</dt><dd id="cameraValue">human</dd></div>
+          <div><dt>Graphics</dt><dd id="graphicsValue">Balanced</dd></div>
+          <div><dt>XR</dt><dd id="xrValue">VR check</dd></div>
+          <div><dt>Radio</dt><dd id="transmitterValue">HID check</dd></div>
+          <div><dt>Objective</dt><dd id="objectiveValue">checkpoint 1</dd></div>
+          <div><dt>Lap</dt><dd id="lapValue">0.0s</dd></div>
+        </dl>
+      </section>
+      <section class="hud hud-right" aria-label="Session controls">
+        <button id="modeButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h12l4 5-4 5H4l4-5z"/></svg><span>Mode</span></button>
+        <button id="cameraButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h3l1.5-2h5L16 7h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm7 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg><span>Camera</span></button>
+        <button id="followButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 8h-5v8H9v-8H4z"/></svg><span>Auto Follow</span></button>
+        <button id="weatherButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17a5 5 0 1 1 1-9.9A7 7 0 0 1 21 10a4 4 0 0 1-1 7H7zM8 20h2v2H8zm5 0h2v2h-2zm-3-3h2v2h-2zm5 0h2v2h-2z"/></svg><span>Weather</span></button>
+        <button id="graphicsButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.6 4.2 2.2 7L12 16l-6.6 4.2 2.2-7L2 9h7z"/></svg><span>Graphics</span></button>
+        <button id="actionButton" type="button" hidden>Fire</button>
+        <button id="garageButton" type="button">Garage</button>
+        <button id="settingsButton" type="button">Controls</button>
+      </section>
+      <div id="xrButtonSlot" aria-label="VR headset entry"></div>
+      <section id="touchControls" aria-label="Touch driving controls">
+        <div class="touch-pad" id="steerPad">
+          <span>Steer</span>
+          <div class="touch-thumb" id="steerThumb"></div>
+        </div>
+        <div class="touch-pad" id="drivePad">
+          <span>Drive</span>
+          <div class="touch-thumb" id="driveThumb"></div>
+        </div>
+      </section>
+      <dialog id="settingsDialog">
+        <form method="dialog">
+          <header>
+            <h2>Control Bindings</h2>
+            <button value="close" aria-label="Close controls">Close</button>
+          </header>
+          <div class="settings-tabs" aria-label="Control settings sections">
+            <button id="bindingsTabButton" type="button">Bindings</button>
+            <button id="transmitterTabButton" type="button">Transmitter</button>
+          </div>
+          <div id="bindingsList"></div>
+          <section class="settings-section" aria-label="RC transmitter calibration">
+            <h3>RC Transmitter</h3>
+            <p id="transmitterStatus" class="note">HID check</p>
+            <div class="transmitter-actions">
+              <button id="connectTransmitterButton" type="button">Connect HID</button>
+              <button id="centerTransmitterButton" type="button">Set Center</button>
+              <button id="extentsTransmitterButton" type="button">Set Extents</button>
+              <button id="simulateTransmitterButton" type="button">Simulate</button>
+            </div>
+            <div id="channelList" class="channel-list"></div>
+          </section>
+          <p class="note">Gamepad, touch, VR controller, and HID transmitter adapters map into these same actions.</p>
+        </form>
+      </dialog>
+      <dialog id="garageDialog">
+        <form method="dialog">
+          <header>
+            <h2>Garage</h2>
+            <button value="close" aria-label="Close garage">Close</button>
+          </header>
+          <div id="garageList" class="garage-grid"></div>
+          <p class="note">Vehicle profiles change handling and the active RC body while sharing the same input, camera, and mode systems.</p>
+        </form>
+      </dialog>
+      <div id="reticle" aria-hidden="true"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

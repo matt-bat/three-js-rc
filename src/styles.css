@@ -1,0 +1,417 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #111318;
+  color: #f6f2e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #111318;
+}
+
+.hud {
+  position: fixed;
+  z-index: 5;
+  padding: 12px;
+  border: 1px solid rgb(246 242 232 / 18%);
+  border-radius: 8px;
+  background: rgb(17 19 24 / 78%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 28%);
+}
+
+.hud-left {
+  top: 14px;
+  left: 14px;
+  width: min(280px, calc(100vw - 28px));
+}
+
+.hud-right {
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.hud-right [hidden] {
+  display: none;
+}
+
+h1,
+h2,
+h3,
+p,
+dl {
+  margin: 0;
+}
+
+h1 {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+h3 {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+#modeLabel {
+  margin-top: 4px;
+  color: #9fd7ff;
+  font-size: 13px;
+}
+
+dl {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+dt {
+  color: #b8bdc7;
+}
+
+dd {
+  margin: 0;
+  color: #fff8dc;
+  text-align: right;
+}
+
+button {
+  min-height: 40px;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 8px;
+  background: #f1d36b;
+  color: #15130b;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.hud-right button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+button:hover {
+  background: #ffe38a;
+}
+
+#settingsDialog,
+#garageDialog {
+  width: min(560px, calc(100vw - 24px));
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-radius: 8px;
+  background: #171a22;
+  color: #f6f2e8;
+}
+
+#settingsDialog form,
+#garageDialog form {
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
+  padding: 0 16px 16px;
+}
+
+#settingsDialog::backdrop,
+#garageDialog::backdrop {
+  background: rgb(0 0 0 / 58%);
+}
+
+#settingsDialog header,
+#garageDialog header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0 12px;
+  margin-bottom: 14px;
+  background: #171a22;
+}
+
+.garage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.garage-card {
+  min-height: 92px;
+  padding: 10px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 8px;
+  background: #252a35;
+  color: #f6f2e8;
+  text-align: left;
+}
+
+.garage-card[aria-pressed="true"] {
+  border-color: #f1d36b;
+  box-shadow: inset 0 0 0 2px #f1d36b;
+}
+
+.garage-name {
+  display: block;
+  color: #fff8dc;
+  font-weight: 800;
+}
+
+.garage-meta {
+  display: block;
+  margin-top: 6px;
+  color: #b8bdc7;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.binding-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+}
+
+.binding-key {
+  min-width: 112px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #252a35;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.note {
+  margin-top: 14px;
+  color: #b8bdc7;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.settings-section {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+}
+
+.settings-tabs {
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding-bottom: 10px;
+  background: #171a22;
+}
+
+.transmitter-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.channel-list {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.channel-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 48px;
+  gap: 10px;
+  align-items: center;
+  color: #dfe6ee;
+  font-size: 12px;
+}
+
+.channel-row meter {
+  width: 100%;
+}
+
+#reticle {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  z-index: 4;
+  pointer-events: none;
+  border: 2px solid rgb(255 255 255 / 58%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#xrButtonSlot {
+  position: fixed;
+  right: 14px;
+  top: 14px;
+  z-index: 5;
+}
+
+#xrButtonSlot .xr-entry,
+#xrButtonSlot #VRButton {
+  position: static !important;
+  min-width: 118px !important;
+  min-height: 36px !important;
+  padding: 8px 12px !important;
+  border: 1px solid rgb(255 255 255 / 18%) !important;
+  border-radius: 8px !important;
+  background: rgb(17 19 24 / 82%) !important;
+  color: #f6f2e8 !important;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 22%);
+  font: 700 12px/1 Inter, ui-sans-serif, system-ui, sans-serif !important;
+}
+
+#touchControls {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: 96px;
+  z-index: 4;
+  display: none;
+  justify-content: space-between;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.touch-pad {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  background: rgb(17 19 24 / 52%);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 20%);
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-pad span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: rgb(246 242 232 / 72%);
+  font-size: 12px;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+}
+
+.touch-thumb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f1d36b;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 32%);
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 720px) {
+  .hud-left {
+    top: 10px;
+    left: 10px;
+    width: calc(100vw - 28px);
+    padding: 10px;
+  }
+
+  .hud-left h1 {
+    font-size: 16px;
+  }
+
+  .hud-left dl {
+    margin-top: 8px;
+  }
+
+  .hud-left dl div {
+    font-size: 12px;
+  }
+
+  .hud-right {
+    left: 14px;
+    right: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  button {
+    min-width: 0;
+    padding-inline: 6px;
+    font-size: 11px;
+  }
+
+  #touchControls {
+    left: 18px;
+    right: 18px;
+    bottom: 138px;
+  }
+
+  .touch-pad {
+    width: 96px;
+    height: 96px;
+    border-color: rgb(255 255 255 / 34%);
+    background: rgb(17 19 24 / 68%);
+  }
+
+  .touch-thumb {
+    width: 38px;
+    height: 38px;
+  }
+
+  .garage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #xrButtonSlot {
+    display: none;
+  }
+}
+
+@media (pointer: coarse), (max-width: 720px) {
+  #touchControls {
+    display: flex;
+  }
+}
