@@ -4,7 +4,7 @@ set -euo pipefail
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 backup_dir="${1:-${project_root}/.backups}"
 timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
-archive="${backup_dir}/three-js-rc-${timestamp}.tar.gz"
+archive="${backup_dir}/rc-world-${timestamp}.tar.gz"
 
 mkdir -p "${backup_dir}"
 

@@ -19,14 +19,14 @@ Generated archives exclude Git history, dependencies, build output, browser repo
 1. Verify the archive:
 
    ```bash
-   sha256sum -c three-js-rc-YYYYMMDDTHHMMSSZ.tar.gz.sha256
+   sha256sum -c rc-world-YYYYMMDDTHHMMSSZ.tar.gz.sha256
    ```
 
 2. Extract it into an empty temporary directory:
 
    ```bash
-   mkdir three-js-rc-restore
-   tar --no-same-owner -xzf three-js-rc-YYYYMMDDTHHMMSSZ.tar.gz -C three-js-rc-restore
+   mkdir rc-world-restore
+   tar --no-same-owner -xzf rc-world-YYYYMMDDTHHMMSSZ.tar.gz -C rc-world-restore
    ```
 
 3. Confirm `package.json`, `src/main.js`, `tests/browser-smoke.spec.js`, and the screenshot set exist.

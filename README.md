@@ -2,9 +2,20 @@
 
 > **Public WIP:** RC World is an actively developed playable prototype. Expect rough edges, changing controls, placeholder tuning, and frequent visual updates.
 
-[Play the latest public build](https://matt-bat.github.io/three-js-rc/)
+[Play the latest public build](https://matt-bat.github.io/rc-world/)
 
 RC World is a web-first Three.js playground for racing, crawling, flying, and completing bite-sized objectives with radio-controlled vehicles. It already supports several playable modes, vehicle profiles, cameras, weather presets, touch input, gamepads, and an experimental RC transmitter path.
+
+> Like this project? You can [support ongoing development on Ko-fi](https://ko-fi.com/matt0bat), helping me maintain existing tools and release more public projects.
+
+## How it works
+
+1. The input manager converts keyboard, touch, gamepad, WebHID, and WebXR input into shared vehicle actions.
+2. Deterministic JavaScript systems update vehicle motion, weather effects, objectives, cameras, and mode-specific state each frame.
+3. Reusable Three.js scene, graphics, and VFX modules render procedural terrain, vehicles, particles, and HUD feedback.
+4. Vite builds the static browser application, which GitHub Pages serves without a game server or account service.
+
+There is no AI backend, model inference, training pipeline, or generative-AI service. Gameplay and graphics are implemented with explicit local JavaScript and Three.js systems.
 
 ## WIP Release Status
 
@@ -193,3 +204,7 @@ Create a source backup before broad changes:
 ```
 
 The restore procedure is documented in [`docs/backup-and-restore.md`](docs/backup-and-restore.md).
+
+## License
+
+RC World is available under the [MIT License](LICENSE).

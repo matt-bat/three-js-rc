@@ -1,13 +1,14 @@
 {
-  "name": "three-js-rc",
+  "name": "rc-world",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "Web-first Three.js RC vehicle simulation foundation.",
-  "homepage": "https://matt-bat.github.io/three-js-rc/",
+  "license": "MIT",
+  "homepage": "https://matt-bat.github.io/rc-world/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-bat/three-js-rc.git"
+    "url": "https://github.com/matt-bat/rc-world.git"
   },
   "keywords": [
     "three.js",
